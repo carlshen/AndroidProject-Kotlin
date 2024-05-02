@@ -18,7 +18,6 @@ import com.hjq.demo.app.AppAdapter
 import com.hjq.demo.ui.adapter.*
 import com.hjq.demo.ui.adapter.TabAdapter.OnTabListener
 import com.hjq.demo.ui.dialog.AddressDialog.RecyclerViewAdapter.OnSelectListener
-import com.tencent.bugly.crashreport.CrashReport
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -395,7 +394,7 @@ class AddressDialog {
                 }
                 return list
             } catch (e: JSONException) {
-                CrashReport.postCatchedException(e)
+//                CrashReport.postCatchedException(e)
             }
             return null
         }
@@ -420,7 +419,7 @@ class AddressDialog {
                 }
                 list
             } catch (e: JSONException) {
-                CrashReport.postCatchedException(e)
+//                CrashReport.postCatchedException(e)
                 null
             }
         }
@@ -441,7 +440,7 @@ class AddressDialog {
                 }
                 list
             } catch (e: JSONException) {
-                CrashReport.postCatchedException(e)
+//                CrashReport.postCatchedException(e)
                 null
             }
         }
@@ -463,9 +462,9 @@ class AddressDialog {
                 inputStream.close()
                 return JSONArray(outStream.toString())
             } catch (e: IOException) {
-                CrashReport.postCatchedException(e)
+//                CrashReport.postCatchedException(e)
             } catch (e: JSONException) {
-                CrashReport.postCatchedException(e)
+//                CrashReport.postCatchedException(e)
             }
             return null
         }

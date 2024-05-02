@@ -25,10 +25,8 @@ import com.hjq.http.config.IRequestApi
 import com.hjq.http.model.HttpHeaders
 import com.hjq.http.model.HttpParams
 import com.hjq.toast.ToastUtils
-import com.hjq.umeng.UmengClient
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
-import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 import okhttp3.OkHttpClient
 import timber.log.Timber
@@ -100,12 +98,6 @@ class AppApplication : Application() {
             // 本地异常捕捉
             CrashHandler.register(application)
 
-            // 友盟统计、登录、分享 SDK
-            UmengClient.init(application, AppConfig.isLogEnable())
-
-            // Bugly 异常捕捉
-            CrashReport.initCrashReport(application, AppConfig.getBuglyId(), AppConfig.isDebug())
-
             // Activity 栈管理初始化
             ActivityManager.getInstance().init(application)
 
@@ -128,17 +120,17 @@ class AppApplication : Application() {
                 .setInterceptor { api: IRequestApi, params: HttpParams, headers: HttpHeaders ->
                     // 添加全局请求头
                     headers.put("token", "66666666666")
-                    headers.put("deviceOaid", UmengClient.getDeviceOaid())
+//                    headers.put("deviceOaid", UmengClient.getDeviceOaid())
                     headers.put("versionName", AppConfig.getVersionName())
                     headers.put("versionCode", AppConfig.getVersionCode().toString())
                 }
                 .into()
 
             // 设置 Json 解析容错监听
-            GsonFactory.setJsonCallback { typeToken: TypeToken<*>, fieldName: String?, jsonToken: JsonToken ->
-                // 上报到 Bugly 错误列表
-                CrashReport.postCatchedException(IllegalArgumentException("类型解析异常：$typeToken#$fieldName，后台返回的类型为：$jsonToken"))
-            }
+//            GsonFactory.setJsonCallback { typeToken: TypeToken<*>, fieldName: String?, jsonToken: JsonToken ->
+//                // 上报到 Bugly 错误列表
+//                CrashReport.postCatchedException(IllegalArgumentException("类型解析异常：$typeToken#$fieldName，后台返回的类型为：$jsonToken"))
+//            }
 
             // 初始化日志打印
             if (AppConfig.isLogEnable()) {

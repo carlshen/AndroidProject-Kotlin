@@ -31,7 +31,6 @@ import com.hjq.demo.widget.StatusLayout
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
 import com.hjq.widget.view.FloatActionButton
-import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
@@ -529,7 +528,7 @@ class VideoSelectActivity : AppActivity(), StatusAction, Runnable, BaseAdapter.O
                 } catch (e: RuntimeException) {
                     // 荣耀 LLD AL20 Android 8.0 出现：java.lang.IllegalArgumentException
                     // 荣耀 HLK AL00 Android 10.0 出现：java.lang.RuntimeException：setDataSource failed: status = 0x80000000
-                    CrashReport.postCatchedException(e)
+//                    CrashReport.postCatchedException(e)
                 }
                 val videoSize: Long = File(videoPath).length()
                 return VideoBean(videoPath, videoWidth, videoHeight, videoDuration, videoSize)

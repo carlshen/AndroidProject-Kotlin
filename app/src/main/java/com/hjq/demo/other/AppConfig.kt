@@ -54,9 +54,9 @@ object AppConfig {
     /**
      * 获取 Bugly Id
      */
-    fun getBuglyId(): String {
-        return BuildConfig.BUGLY_ID
-    }
+//    fun getBuglyId(): String {
+//        return BuildConfig.BUGLY_ID
+//    }
 
     /**
      * 获取服务器主机地址

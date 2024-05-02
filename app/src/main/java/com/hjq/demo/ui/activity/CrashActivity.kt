@@ -26,7 +26,6 @@ import com.hjq.demo.app.AppActivity
 import com.hjq.demo.other.AppConfig
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
-import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.PrintWriter
@@ -245,7 +244,7 @@ class CrashActivity : AppActivity() {
                 infoView?.text = builder
             }
         } catch (e: PackageManager.NameNotFoundException) {
-            CrashReport.postCatchedException(e)
+//            CrashReport.postCatchedException(e)
         }
     }
 

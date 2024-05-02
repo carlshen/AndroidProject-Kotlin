@@ -15,7 +15,6 @@ import com.hjq.demo.ui.activity.VideoSelectActivity.OnVideoSelectListener
 import com.hjq.demo.ui.activity.VideoSelectActivity.VideoBean
 import com.hjq.demo.ui.dialog.InputDialog
 import com.hjq.demo.ui.dialog.MessageDialog
-import com.tencent.bugly.crashreport.CrashReport
 import java.util.*
 
 /**
@@ -142,9 +141,9 @@ class MineFragment : TitleBarFragment<HomeActivity>() {
             R.id.btn_mine_crash -> {
 
                 // 上报错误到 Bugly 上
-                CrashReport.postCatchedException(IllegalStateException("are you ok?"))
+//                CrashReport.postCatchedException(IllegalStateException("are you ok?"))
                 // 关闭 Bugly 异常捕捉
-                CrashReport.closeBugly()
+//                CrashReport.closeBugly()
                 throw IllegalStateException("are you ok?")
             }
             R.id.btn_mine_pay -> {
